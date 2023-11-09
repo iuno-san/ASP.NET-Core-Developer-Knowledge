@@ -202,5 +202,87 @@ Zrozumienie struktur danych i algorytmów jest kluczowe dla rozwoju oprogramowan
 <hr>
 <br><br><br>
 
+# Naucz się podstaw języka C#
+
+- https://www.chillcode.org/Csharp-basic/Introduction_to_Csharp.html
+- https://learn.microsoft.com/pl-pl/dotnet/csharp/
+
+<hr>
+<br><br><br>
+
+# Naucz się podstaw ASP.NET
+
+- https://www.chillcode.org/ASP.NET-CORE-Basic/Introduction_to_ASP.NET-Core.html
+- https://learn.microsoft.com/pl-pl/dotnet/fundamentals/
+
+<hr>
+<br><br><br>
+
+
+# .NET CLI - Podstawowe Operacje
+
+.NET CLI (Command Line Interface) to narzędzie, które umożliwia programistom pracę z platformą .NET za pomocą wiersza poleceń. Jest to narzędzie niezwykle przydatne do zarządzania projektami .NET, kompilowania kodu, uruchamiania aplikacji i wiele innych zadań. Oto kilka podstawowych poleceń i operacji, które można wykonywać za pomocą .NET CLI:
+
+## Tworzenie nowego projektu:
+
+Możesz użyć .NET CLI do tworzenia nowego projektu, na przykład:
+
+```shell
+dotnet new console -n MyConsoleApp
+```
+
+To polecenie stworzy nową konsolową aplikację o nazwie "MyConsoleApp".
+
+## Kompilacja projektu:
+
+Aby skompilować projekt, użyj polecenia `dotnet build`. Na przykład:
+
+```shell
+dotnet build
+```
+
+## Uruchamianie projektu:
+
+Aby uruchomić projekt, użyj polecenia `dotnet run`. Na przykład:
+
+```shell
+dotnet run
+```
+
+To uruchomi aplikację w trybie konsolowym.
+
+## Dodawanie zależności:
+
+Możesz użyć `dotnet add` do dodawania zależności do projektu. Na przykład, aby dodać pakiet NuGet, możesz użyć polecenia:
+
+```shell
+dotnet add package NazwaPakietu
+```
+
+## Testowanie projektu:
+
+.NET CLI umożliwia również wykonywanie testów jednostkowych. Możesz użyć polecenia `dotnet test`, aby uruchomić testy zdefiniowane w projekcie.
+
+## Publikowanie projektu:
+
+Aby opublikować projekt do wdrożenia, użyj polecenia `dotnet publish`. Możesz dostosować opcje publikowania, takie jak framework docelowy i środowisko docelowe.
+
+## Sprawdzanie informacji o projekcie:
+
+Polecenie `dotnet list` pozwala uzyskać informacje o projektach w bieżącym katalogu lub wskazanym katalogu.
+
+## Kontrola wersji SDK .NET:
+
+Możesz użyć polecenia `dotnet --version`, aby sprawdzić zainstalowaną wersję SDK .NET. Możesz również użyć `dotnet --list-sdks`, aby wyświetlić dostępne wersje SDK .NET na twoim systemie.
+
+## Inne komendy:
+
+.NET CLI oferuje wiele innych komend i opcji, które pozwalają na różne operacje, takie jak zarządzanie paketami, obsługa projektów webowych, praca z bazami danych itp.
+
+.NET CLI jest wszechstronnym narzędziem, które ułatwia pracę z platformą .NET. Możesz używać go do zarządzania projektami ASP.NET Core, projektami konsolowymi, bibliotekami i innymi rodzajami projektów .NET. Pamiętaj, że dostępne komendy mogą się różnić w zależności od wersji SDK .NET, więc zawsze warto sprawdzić dokumentację dla najnowszej wersji narzędzia.
+
+<hr>
+<br><br><br>
+
 
 
