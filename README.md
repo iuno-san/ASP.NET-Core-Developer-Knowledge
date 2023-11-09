@@ -284,5 +284,315 @@ Możesz użyć polecenia `dotnet --version`, aby sprawdzić zainstalowaną wersj
 <hr>
 <br><br><br>
 
+# Podstawy Projektowania Baz Danych i Języka SQL
+
+## Projektowanie Baz Danych
+
+Projektowanie baz danych to proces tworzenia struktury bazy danych, która umożliwia skuteczne przechowywanie i zarządzanie danymi. Oto kluczowe koncepcje związane z projektowaniem baz danych:
+
+### Tabele
+
+Tabele stanowią podstawową jednostkę przechowywania danych w bazie danych. Każda tabela jest zbiorem rekordów, a każdy rekord składa się z kolumn, które reprezentują różne atrybuty danych.
+
+### Klucze główne (Primary Keys)
+
+Klucz główny to unikalny identyfikator dla każdego rekordu w tabeli. Pomaga to w jednoznacznym identyfikowaniu danych.
+
+### Klucze obce (Foreign Keys)
+
+Klucz obcy jest polem w tabeli, które odnosi się do klucza głównego w innej tabeli. Pozwala to na tworzenie relacji między tabelami.
+
+### Relacje
+
+Relacje określają, jak dwie lub więcej tabel są powiązane ze sobą. Najczęściej spotykanymi relacjami są relacje jeden do wielu, wiele do jednego i wiele do wielu.
+
+### Normalizacja
+
+Normalizacja jest procesem organizacji danych w celu uniknięcia powtarzających się informacji i zapewnienia spójności danych. Istnieje kilka form normalizacji, takich jak pierwsza, druga i trzecia normalizacja.
+
+### Indeksy
+
+Indeksy są strukturami danych, które przyspieszają wyszukiwanie w tabelach. Pozwalają na efektywne odnajdywanie danych na podstawie określonych kryteriów.
+
+## Język SQL (Structured Query Language)
+
+SQL to język programowania używany do zarządzania danymi w bazach danych. Oto podstawowe polecenia SQL i ich zastosowania:
+
+### Polecenie SELECT
+
+Służy do wybierania danych z tabeli. Przykład:
+
+```sql
+SELECT kolumna1, kolumna2 FROM tabela WHERE warunek;
+```
+
+### Polecenie INSERT
+
+Dodaje nowe dane do tabeli. Przykład:
+
+```sql
+INSERT INTO tabela (kolumna1, kolumna2) VALUES (wartość1, wartość2);
+```
+
+### Polecenie UPDATE
+
+Aktualizuje istniejące dane w tabeli. Przykład:
+
+```sql
+UPDATE tabela SET kolumna1 = nowa_wartość WHERE warunek;
+```
+
+### Polecenie DELETE
+
+Usuwa dane z tabeli. Przykład:
+
+```sql
+DELETE FROM tabela WHERE warunek;
+```
+
+### Polecenie CREATE TABLE
+
+Tworzy nową tabelę w bazie danych. Przykład:
+
+```sql
+CREATE TABLE tabela (
+    kolumna1 typ_danych,
+    kolumna2 typ_danych,
+    PRIMARY KEY (kolumna1)
+);
+```
+
+### Polecenie ALTER TABLE
+
+Zmienia strukturę istniejącej tabeli. Przykład:
+
+```sql
+ALTER TABLE tabela ADD COLUMN nowa_kolumna typ_danych;
+```
+
+### Polecenie JOIN
+
+Łączy dane z dwóch lub więcej tabel na podstawie określonych relacji. Przykład:
+
+```sql
+SELECT kolumna1, kolumna2 FROM tabela1
+JOIN tabela2 ON tabela1.klucz_obcy = tabela2.klucz_główny;
+```
+
+### Polecenie GROUP BY
+
+Grupuje dane na podstawie określonych kolumn i oblicza agregaty, takie jak SUM, AVG, COUNT itp. Przykład:
+
+```sql
+SELECT kolumna1, AVG(kolumna2) FROM tabela GROUP BY kolumna1;
+```
+
+### Polecenie ORDER BY
+
+Sortuje wyniki zapytania według określonej kolumny. Przykład:
+
+```sql
+SELECT kolumna1, kolumna2 FROM tabela ORDER BY kolumna1 ASC;
+```
+
+To tylko podstawy projektowania baz danych i języka SQL. Oba te zagadnienia są obszernym tematem, który można zgłębiać, ucząc się bardziej zaawansowanych koncepcji i technik. Warto również korzystać z dokumentacji systemu zarządzania bazą danych (np. MySQL, PostgreSQL, SQL Server itp.), aby poznać specyficzne polecenia i funkcje dostępne w danym systemie.
+
+<hr>
+<br><br><br>
+
+# Procedury Składowane w Bazach Danych
+
+Procedury składowane to zestawy instrukcji SQL, które są zapisane w bazie danych i mogą być wykonywane wielokrotnie przez aplikacje lub użytkowników. Procedury składowane pozwalają na przechowywanie i ponowne wykorzystywanie logicznych operacji na danych, co może przyczynić się do poprawy wydajności, zwiększenia bezpieczeństwa i ułatwienia zarządzania bazą danych. Oto podstawowe informacje o SQL procedurach składowanych:
+
+## Tworzenie Procedur Składowanych
+
+Aby utworzyć procedurę składowaną, używa się polecenia `CREATE PROCEDURE`. Przykład tworzenia prostej procedury składowanej w języku T-SQL (dla baz danych SQL Server):
+
+```sql
+CREATE PROCEDURE Nazwa_Procedury
+AS
+BEGIN
+    -- Ciało procedury składowanej
+END;
+```
+
+## Parametry Procedury
+
+Procedury składowane mogą przyjmować parametry, które umożliwiają dostarczenie wartości przy wywoływaniu procedury. Parametry są deklarowane w sekcji `CREATE PROCEDURE`. Przykład:
+
+```sql
+CREATE PROCEDURE DodajKlienta
+    @Imie NVARCHAR(50),
+    @Nazwisko NVARCHAR(50)
+AS
+BEGIN
+    -- Ciało procedury, które wykorzystuje parametry
+END;
+```
+
+## Wywoływanie Procedury
+
+Aby wywołać procedurę składowaną, używa się polecenia `EXECUTE` lub jego skróconej formy `EXEC`. Przykład wywołania procedury:
+
+```sql
+EXEC DodajKlienta @Imie = 'Jan', @Nazwisko = 'Kowalski';
+```
+
+## Zwracanie Wyników
+
+Procedury składowane mogą zwracać wyniki na różne sposoby. Możesz użyć polecenia `SELECT` wewnątrz procedury, aby zwrócić wynik zapytania. Innym sposobem jest użycie parametrów wyjściowych lub `OUTPUT`, aby przekazać wyniki procedury na zewnątrz.
+
+## Aktualizacja Danych
+
+Procedury składowane mogą być używane do aktualizacji danych w bazie danych. Można wykonywać operacje `INSERT`, `UPDATE` lub `DELETE` wewnątrz procedury.
+
+## Transakcje
+
+Procedury składowane mogą być używane do zarządzania transakcjami. Można rozpoczynać, zatwierdzać lub anulować transakcje w obrębie procedury.
+
+## Bezpieczeństwo
+
+Procedury składowane mogą pomóc w zwiększeniu bezpieczeństwa bazy danych, ponieważ dostęp do procedury można kontrolować za pomocą uprawnień dostępu.
+
+## Przechowywanie Kodu SQL
+
+Przechowywanie logiki biznesowej w procedurach składowanych pozwala na oddzielenie kodu aplikacji od kodu SQL, co ułatwia zarządzanie i utrzymanie systemu.
+
+## Optymalizacja Wydajności
+
+Procedury składowane mogą poprawić wydajność, ponieważ mogą być kompilowane i buforowane w pamięci, co eliminuje potrzebę analizy zapytań za każdym razem, gdy są wywoływane.
+
+Procedury składowane są dostępne w wielu systemach zarządzania bazą danych, takich jak Microsoft SQL Server, MySQL, PostgreSQL, Oracle i wiele innych. Składnia i funkcje procedur składowanych mogą się różnić w zależności od używanego systemu, dlatego zawsze warto sprawdzić dokumentację dla konkretnego systemu.
+
+<hr>
+<br><br><br>
+
+# Ograniczenia w Języku SQL
+
+Ograniczenia w języku SQL to reguły lub warunki, które definiują, jak dane w bazie danych muszą być przechowywane lub zmieniane. Służą do zapewnienia spójności danych, uniknięcia błędów i utrzymania integralności bazy danych. Oto kilka najważniejszych typów ograniczeń w SQL:
+
+## Ograniczenie klucza głównego (Primary Key Constraint):
+
+- Definiuje jedno lub więcej kolumn jako unikalne klucze główne tabeli.
+- Gwarantuje, że każdy wiersz w tabeli jest jednoznacznie identyfikowany przez wartości w tych kolumnach.
+- Zapobiega duplikatom i pustym wartościom.
+
+```sql
+CREATE TABLE Uzytkownicy (
+    ID INT PRIMARY KEY,
+    Nazwa UZYTKOWNIKA VARCHAR(50)
+);
+```
+
+## Ograniczenie klucza obcego (Foreign Key Constraint):
+
+- Określa, że wartości w jednej kolumnie muszą pasować do wartości w innej kolumnie w innej tabeli.
+- Ustanawia relacje między tabelami.
+
+```sql
+CREATE TABLE Zamowienia (
+    ID INT PRIMARY KEY,
+    KlientID INT,
+    FOREIGN KEY (KlientID) REFERENCES Klienci(ID)
+);
+```
+
+## Ograniczenie unikalności (Unique Constraint):
+
+- Zapewnia, że wartości w danej kolumnie lub grupie kolumn są unikalne w całej tabeli, z wyjątkiem wartości NULL.
+
+```sql
+CREATE TABLE Produkty (
+    ID INT PRIMARY KEY,
+    NazwaProduktu VARCHAR(50) UNIQUE
+);
+```
+
+## Ograniczenie sprawdzania (Check Constraint):
+
+- Określa warunki, które muszą być spełnione, aby dane mogły być wprowadzane do tabeli.
+- Możesz używać wyrażeń logicznych do zdefiniowania warunków.
+
+```sql
+CREATE TABLE Pracownicy (
+    ID INT PRIMARY KEY,
+    DataZatrudnienia DATE,
+    CONSTRAINT CheckData CHECK (DataZatrudnienia >= '2000-01-01')
+);
+```
+
+## Ograniczenie NOT NULL:
+
+- Określa, że dana kolumna nie może mieć wartości NULL, czyli musi zawsze zawierać jakieś dane.
+
+```sql
+CREATE TABLE Produkty (
+    ID INT PRIMARY KEY,
+    NazwaProduktu VARCHAR(50) NOT NULL
+);
+```
+
+## Ograniczenie CASCADE:
+
+- Stosowane w ograniczeniach klucza obcego.
+- Określa, że zmiany w tabeli nadrzędnej (np. usunięcie rekordu) zostaną odzwierciedlone w tabeli podrzędnej (np. usunięcie powiązanych rekordów).
+
+```sql
+CREATE TABLE Zamowienia (
+    ID INT PRIMARY KEY,
+    KlientID INT,
+    FOREIGN KEY (KlientID) REFERENCES Klienci(ID) ON DELETE CASCADE
+);
+```
+
+Ograniczenia SQL są ważnym narzędziem do zapewnienia spójności danych i integralności bazy danych. Pozwalają na definiowanie zasad, których należy przestrzegać podczas dodawania, aktualizowania lub usuwania danych, co prowadzi do bardziej niezawodnych i bezpiecznych baz danych.
 
 
+<hr>
+<br><br><br>
+
+# Wyzwalacze SQL
+
+Wyzwalacze (triggers) w języku SQL to specjalne procedury lub reguły, które są automatycznie uruchamiane w odpowiedzi na określone operacje wykonywane na tabelach, takie jak wstawianie, aktualizacja lub usuwanie danych. Wyzwalacze pozwalają na automatyzację działań, analizę i kontrolę zmian w bazie danych. Oto kilka kluczowych informacji na temat wyzwalaczy SQL:
+
+## Typy wyzwalaczy
+
+- Wyzwalacze dzielą się na dwa podstawowe typy: przedoperacyjne (BEFORE) i pooperacyjne (AFTER). Wyzwalacze "przed" uruchamiane są przed wykonaniem operacji na tabeli, podczas gdy wyzwalacze "po" uruchamiane są po wykonaniu operacji.
+
+## Operacje wyzwalacza
+
+- Wyzwalacze można przypisać do różnych operacji na tabeli, takich jak INSERT, UPDATE i DELETE. W ten sposób można kontrolować zachowanie bazy danych w odpowiedzi na konkretne zmiany danych.
+
+## Kiedy są uruchamiane
+
+- Wyzwalacze są automatycznie uruchamiane, gdy określona operacja jest wykonywana na tabeli, do której są przypisane. Na przykład, wyzwalacz "przed wstawieniem" uruchomi się, gdy próbujesz wstawić nowy rekord.
+
+## Składnia tworzenia wyzwalaczy
+
+W SQL, wyzwalacze są tworzone za pomocą polecenia `CREATE TRIGGER`. W składni definiuje się, kiedy wyzwalacz ma być uruchamiany, co ma robić i w jakiej tabeli.
+
+```sql
+CREATE TRIGGER nazwa_wyzwalacza
+BEFORE INSERT ON tabela
+FOR EACH ROW
+BEGIN
+    -- Ciało wyzwalacza
+END;
+```
+
+## Kontekst wyzwalacza
+
+- W wyzwalaczach można odwoływać się do starych i nowych danych. Stare dane to wartości przed operacją, a nowe dane to wartości po operacji. W zależności od kontekstu wyzwalacza można używać specjalnych słów kluczowych, takich jak `OLD` i `NEW`, aby odwołać się do tych danych.
+
+## Przykłady zastosowań
+
+- Wyzwalacze są przydatne do tworzenia zabezpieczeń (np. sprawdzanie uprawnień przed operacją), kontroli spójności danych (np. automatyczne aktualizacje powiązanych rekordów) oraz audytu (np. zapisywanie zmian do logów).
+
+## Zarządzanie wyzwalaczami
+
+- Można tworzyć, modyfikować i usuwać wyzwalacze w bazie danych za pomocą odpowiednich poleceń. Jeśli nieprawidłowo zaprojektowany wyzwalacz może prowadzić do problemów z wydajnością, więc warto być ostrożnym w ich stosowaniu.
+
+Wyzwalacze SQL są potężnym narzędziem do automatyzacji działań i zapewnienia integralności danych w bazach danych. Jednak należy pamiętać, że nadmierna ilość i skomplikowane wyzwalacze mogą skomplikować zarządzanie bazą danych, dlatego zawsze warto starannie przemyśleć, gdzie i kiedy je używać.
+
+<hr>
+<br><br><br>
